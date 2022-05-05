@@ -1,6 +1,7 @@
-export default function createKey(keyValue) {
-  const key = document.createElement('div');
-  key.classList.add('key');
-  key.textContent = keyValue;
-  return key
+class Key {
+  constructor(key) {
+    this.key = key;
+  }
 }
+
+export default Key;
