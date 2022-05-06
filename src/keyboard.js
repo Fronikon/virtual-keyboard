@@ -1,13 +1,13 @@
-import Key from './key';
-import Keys from './Keys';
-
 class Keyboard {
-  constructor(lang = 'en') {
+  constructor(lang = 'en', keysData, textArea) {
     this.lang = lang;
+    this.keysData = keysData;
+    this.textArea = textArea;
     this.isShift = false;
+    this.isCaps = false;
     this.keyboardElement = null;
-    this.keysData = Keys;
     this.keys = new Map()
+    document.isShift = this.isShift
   }
   createKeyboard() {
     let keyboard = document.createElement('div');
@@ -15,16 +15,159 @@ class Keyboard {
     this.keyboardElement = keyboard;
     return keyboard;
   }
+  activateKeyFunction(keyData, event) {
+    switch (keyData.keyCode) {
+      case 'Backspace': {
+        const text = this.textArea.value;
+        let currentPos = getCurrentPosition(this.textArea);
+        this.textArea.focus();
+
+        if (text.length > 0 && currentPos !== 0) {
+          let backSpace = text.substring(0, currentPos - 1) + text.substring(currentPos, text.length);
+          this.textArea.value = backSpace;
+          resetCursor(this.textArea, currentPos - 1);
+        }
+        
+        break;
+      }
+
+      case 'Delete': {
+        const text = this.textArea.value;
+        let currentPos = getCurrentPosition(this.textArea);
+        this.textArea.focus();
+
+        if (text.length > 0 && currentPos !== text.length) {
+          let deleteOp = text.substring(0, currentPos) + text.substring(currentPos + 1, text.length);
+          this.textArea.value = deleteOp;
+          resetCursor(this.textArea, currentPos);
+        }
+        
+        break;
+      }
+
+      case 'Enter': {
+        updateText(this.textArea, '\n');
+        
+        break;
+      }
+      
+      case 'CapsLock': {
+        this.isShift = !this.isShift;
+        this.isCaps = !this.isCaps
+
+        event.target.classList.toggle('active_capslock');
+        
+        this.render();
+        
+        break;
+      }
+
+      case 'switchLang': {
+        if (this.lang === 'ru') {
+          this.lang = 'en'
+        } else {
+          this.lang = 'ru'
+        }
+        this.render()
+        
+        break;
+      }
+
+      case 'ArrowUp': {
+        updateText(this.textArea, keyData.general);
+        break;
+      }
+      case 'ArrowDown': {
+        updateText(this.textArea, keyData.general);
+        break;
+      }
+      case 'ArrowLeft': {
+        updateText(this.textArea, keyData.general);
+        break;
+      }
+      case 'ArrowRight': {
+        updateText(this.textArea, keyData.general);
+        break;
+      }
+
+      case 'ShiftLeft': {
+        break;
+      }
+      case 'ShiftRight': {
+        break;
+      }
+      case 'Tab': {
+        updateText(this.textArea, '  ');
+        break;
+      }
+      case 'ControlRight': {
+        break;
+      }
+      case 'ControlLeft': {
+        break;
+      }
+      case 'AltLeft': {
+        break;
+      }
+      case 'AltRight': {
+        break;
+      }
+    
+      default:
+        const letter = keyData[this.isShift ? 'shift' : 'common'][this.lang];
+        updateText(this.textArea, letter);
+        
+        break;
+    }
+
+    function updateText(textArea, letter) {
+      const text = textArea.value;
+      let currentPos = getCurrentPosition(textArea);
+
+      let newText = text.substring(0, currentPos) + letter + text.substring(currentPos, text.length);
+      textArea.value = newText;
+
+      resetCursor(textArea, currentPos + letter.length);
+    }
+
+    function getCurrentPosition(textarea) {
+      if (textarea.selectionStart) {
+        return textarea.selectionStart;
+      } 
+      // else if (document.selection) {
+      //   textarea.focus();
+
+      //   let range = document.selection.createRange();
+      //   if (range == null) {
+      //     return 0;
+      //   }
+
+      //   let re = textarea.createTextRange(),
+      //     rc = re.duplicate();
+      //   re.moveToBookmark(range.getBookmark());
+      //   rc.setEndPoint('EndToStart', re);
+
+      //   return rc.text.length;
+      // }
+      return 0;
+    }
+
+    function resetCursor(textElement, currentPos) { 
+      if (textElement.setSelectionRange) { 
+          textElement.focus(); 
+          textElement.setSelectionRange(currentPos, currentPos); 
+      } else if (textElement.createTextRange) { 
+          let range = textElement.createTextRange();  
+          range.moveStart('character', currentPos); 
+          range.select(); 
+      } 
+    }
+  }
   addListener() {
     this.keyboardElement.addEventListener('click', (event) => {
-      // if (this.lang === 'ru') {
-      //   this.lang = 'en'
-      // } else {
-      //   this.lang = 'ru'
-      // }
-      // this.render()
       if (event.target.classList.contains('key')) {
-        console.log(event.target.innerHTML)
+        const keyData = this.keys.get(event.target);
+        this.activateKeyFunction(keyData, event)
       }
     })
   }
@@ -43,6 +186,52 @@ class Keyboard {
     let key = document.createElement('div');
     key.classList.add('key');
 
+    // if (value.keyCode === 'CapsLock' && this.isCaps === true) {
+    //   key.classList.add('active_capslock');
+    // }
+    
+    if (value.keyCode === 'ShiftLeft' || value.keyCode === 'ShiftRight') {
+
+      key.addEventListener('mousedown', () => {
+        this.isShift = !this.isShift;
+        this.render();
+        
+        const func = () => {
+          this.isShift = !this.isShift;
+          this.render();
+          document.removeEventListener('mouseup', func)
+        }
+
+        document.addEventListener('mouseup', func)
+      })
+
+      // const prerender = (event) => {
+      //   this.isShift = !this.isShift;
+      //   this.render();
+      //   event.target.removeEventListener(event.type, prerender)
+      // }
+
+      // if (this.isShift === false) {
+      //   key.addEventListener('mousedown', prerender)
+      // } else {
+      //   key.addEventListener('mouseup', prerender)
+      // }
+
+      // console.log(1)
+      // key.addEventListener('mousedown', () => {
+      //   key.addEventListener('mouseout', () => {
+      //     this.isShift = !this.isShift;
+      //     this.render();
+      //   })
+      //   this.isShift = !this.isShift;
+      //   this.render();
+      // })
+      // key.addEventListener('mouseup', () => {
+      //   this.isShift = !this.isShift;
+      //   this.render();
+      // })
+    }
+
     if ( generalKey.includes(value.keyCode) ) {
       key.classList.add('general_key');
       if (value.keyCode === 'Space') {
@@ -51,7 +240,7 @@ class Keyboard {
     }
     
     key.textContent = keyValue;
-    this.keys.set(key, value)
+    this.keys.set(key, value);
     return key;
   }
   createRow() {
@@ -72,8 +261,18 @@ class Keyboard {
     });
   }
   render() {
-    this.keyboardElement.innerHTML = '';
-    this.addKeys();
+    // this.keyboardElement.innerHTML = '';
+    // this.keys.clear();
+    // this.addKeys();
+    for (let entry of this.keys) {
+      let newText
+      if (entry[1].general) {
+        newText = entry[1].general
+      } else {
+        newText = entry[1][this.isShift ? 'shift' : 'common'][this.lang]
+      }
+      entry[0].textContent = newText;
+    }
   }
 }
 

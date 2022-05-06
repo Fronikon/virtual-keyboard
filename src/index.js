@@ -1,13 +1,32 @@
 import './style.scss';
 import Keyboard from './keyboard';
-import Keys from './Keys';
+import keysData from './keysData';
 
 const currentLang = 'en'
 
-let keyboard = new Keyboard(currentLang);
+const textArea = document.createElement('textarea');
+textArea.classList.add('textarea');
+document.body.append(textArea);
+
+let keyboard = new Keyboard(currentLang, keysData, textArea);
 document.body.append( keyboard.createKeyboard() );
 keyboard.addListener()
-keyboard.addKeys(Keys)
+keyboard.addKeys()
+
+// document.addEventListener("keypress", (event) => {
+//   console.log(event)
+// })
+
+// textArea.addEventListener("mousedown", (event) => {
+//   let a = (event) => {
+//     console.log(2)
+//     event.target.removeEventListener("mouseout", a)
+//   }
+
+//   console.log(1)
+  
+//   event.target.addEventListener("mouseout", a)
+// })
 
 
 // const keysEN = [

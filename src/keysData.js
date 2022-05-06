@@ -1,4 +1,4 @@
-const Keys = [
+const keysData = [
   [
     {
       keyCode: 'Backquote',
@@ -178,12 +178,12 @@ const Keys = [
     {
       keyCode: 'KeyE',
       common: {
-        en: 'у',
-        ru: 'e',
+        en: 'e',
+        ru: 'у',
       },
       shift: {
-        en: 'У',
-        ru: 'E',
+        en: 'E',
+        ru: 'У',
       }
     },
     {
@@ -223,7 +223,7 @@ const Keys = [
       keyCode: 'KeyU',
       common: {
         en: 'u',
-        ru: 'Г',
+        ru: 'г',
       },
       shift: {
         en: 'U',
@@ -567,11 +567,25 @@ const Keys = [
     },
     {
       keyCode: 'switchLang',
-      general: 'en'
+      common: {
+        en: 'en',
+        ru: 'ru',
+      },
+      shift: {
+        en: 'en',
+        ru: 'ru',
+      }
     },
     {
       keyCode: 'Space',
-      general: ' '
+      common: {
+        en: ' ',
+        ru: ' ',
+      },
+      shift: {
+        en: ' ',
+        ru: ' ',
+      }
     },
     {
       keyCode: 'AltRight',
@@ -596,4 +610,4 @@ const Keys = [
   ]
 ]
 
-export default Keys;
+export default keysData;
