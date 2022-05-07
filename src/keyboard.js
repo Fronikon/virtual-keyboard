@@ -15,7 +15,7 @@ class Keyboard {
     this.keyboardElement = keyboard;
     return keyboard;
   }
-  activateKeyFunction(keyData, event) {
+  activateKeyFunction(keyData, element) {
     switch (keyData.keyCode) {
       case 'Backspace': {
         const text = this.textArea.value;
@@ -55,7 +55,7 @@ class Keyboard {
         this.isShift = !this.isShift;
         this.isCaps = !this.isCaps
 
-        event.target.classList.toggle('active_capslock');
+        element.classList.toggle('active_capslock');
         
         this.render();
         
@@ -133,22 +133,7 @@ class Keyboard {
     function getCurrentPosition(textarea) {
       if (textarea.selectionStart) {
         return textarea.selectionStart;
-      } 
-      // else if (document.selection) {
-      //   textarea.focus();
-
-      //   let range = document.selection.createRange();
-      //   if (range == null) {
-      //     return 0;
-      //   }
-
-      //   let re = textarea.createTextRange(),
-      //     rc = re.duplicate();
-      //   re.moveToBookmark(range.getBookmark());
-      //   rc.setEndPoint('EndToStart', re);
-
-      //   return rc.text.length;
-      // }
+      }
       return 0;
     }
 
@@ -167,9 +152,52 @@ class Keyboard {
     this.keyboardElement.addEventListener('click', (event) => {
       if (event.target.classList.contains('key')) {
         const keyData = this.keys.get(event.target);
-        this.activateKeyFunction(keyData, event)
+        this.activateKeyFunction(keyData, event.target)
       }
     })
+
+    this.textArea.onkeydown = function (e) {
+      return false;
+    }
+
+    let pressedKeys = new Map();
+
+    document.addEventListener('keydown', (event) => {
+      if (!pressedKeys.has(event.code)) {
+        if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+          this.isShift = !this.isShift;
+          this.render();
+        }
+
+        for (let entry of this.keys) {
+          if (entry[1].keyCode === event.code) {
+            entry[0].classList.add('active_key');
+            pressedKeys.set(event.code, entry);
+            break;
+          }
+        }
+      }
+    })
+
+    document.addEventListener('keyup', (event) => {
+      if (pressedKeys.has('ShiftLeft') && pressedKeys.has('AltLeft')) {
+        this.lang = this.lang === 'ru' ? 'en' : 'ru';
+        this.render();
+      }
+
+      if (pressedKeys.has(event.code)) {
+        if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
+          this.isShift = !this.isShift;
+          this.render();
+        }
+
+        let entry = pressedKeys.get(event.code);
+        entry[0].classList.remove('active_key');
+        this.activateKeyFunction(entry[1], entry[0])
+        pressedKeys.delete(event.code);
+      }
+    })
+
   }
   createKey(value) {
     const generalKey = ['Tab','CapsLock','ShiftLeft','ControlLeft','AltLeft','Space','AltRight','ControlRight','Delete','Enter','Backspace'];
@@ -185,17 +213,13 @@ class Keyboard {
 
     let key = document.createElement('div');
     key.classList.add('key');
-
-    // if (value.keyCode === 'CapsLock' && this.isCaps === true) {
-    //   key.classList.add('active_capslock');
-    // }
     
     if (value.keyCode === 'ShiftLeft' || value.keyCode === 'ShiftRight') {
 
       key.addEventListener('mousedown', () => {
         this.isShift = !this.isShift;
         this.render();
-        
+
         const func = () => {
           this.isShift = !this.isShift;
           this.render();
@@ -204,32 +228,6 @@ class Keyboard {
 
         document.addEventListener('mouseup', func)
       })
-
-      // const prerender = (event) => {
-      //   this.isShift = !this.isShift;
-      //   this.render();
-      //   event.target.removeEventListener(event.type, prerender)
-      // }
-
-      // if (this.isShift === false) {
-      //   key.addEventListener('mousedown', prerender)
-      // } else {
-      //   key.addEventListener('mouseup', prerender)
-      // }
-
-      // console.log(1)
-      // key.addEventListener('mousedown', () => {
-      //   key.addEventListener('mouseout', () => {
-      //     this.isShift = !this.isShift;
-      //     this.render();
-      //   })
-      //   this.isShift = !this.isShift;
-      //   this.render();
-      // })
-      // key.addEventListener('mouseup', () => {
-      //   this.isShift = !this.isShift;
-      //   this.render();
-      // })
     }
 
     if ( generalKey.includes(value.keyCode) ) {
@@ -261,9 +259,6 @@ class Keyboard {
     });
   }
   render() {
-    // this.keyboardElement.innerHTML = '';
-    // this.keys.clear();
-    // this.addKeys();
     for (let entry of this.keys) {
       let newText
       if (entry[1].general) {
@@ -277,19 +272,3 @@ class Keyboard {
 }
 
 export default Keyboard;
-
-// export default function createKeyboard(arrKeys) {
-//   const keyboard = document.createElement('div');
-//   keyboard.classList.add('keyboard');
-//   arrKeys.forEach( keysLine => {
-//     const line = document.createElement('div');
-//     line.classList.add('keyboard_line');
-
-//     keysLine.forEach( key => {
-//       line.append( createKey(key) );
-//     })
-
-//     keyboard.append(line);
-//   });
-//   return keyboard;
-// }

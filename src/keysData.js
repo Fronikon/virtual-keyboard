@@ -122,7 +122,7 @@ const keysData = [
       }
     },
     {
-      keyCode: 'NumpadSubtract',
+      keyCode: 'Minus',
       common: {
         en: '-',
         ru: '-',
@@ -504,7 +504,7 @@ const keysData = [
       }
     },
     {
-      keyCode: 'NumpadDecimal',
+      keyCode: 'Comma',
       common: {
         en: ',',
         ru: 'б',

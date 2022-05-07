@@ -93,6 +93,9 @@ body {
     &.space {
         flex: 20 1 auto;
     }
+    &.active_key {
+        background-color: rgba(0, 0, 0, 0.616);
+    }
 }
 
 .active_capslock {
