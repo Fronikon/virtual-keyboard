@@ -9,7 +9,7 @@ const keysData = [
       shift: {
         en: '~',
         ru: 'Ё',
-      }
+      },
     },
     {
       keyCode: 'Digit1',
@@ -20,7 +20,7 @@ const keysData = [
       shift: {
         en: '!',
         ru: '!',
-      }
+      },
     },
     {
       keyCode: 'Digit2',
@@ -31,7 +31,7 @@ const keysData = [
       shift: {
         en: '@',
         ru: '"',
-      }
+      },
     },
     {
       keyCode: 'Digit3',
@@ -42,7 +42,7 @@ const keysData = [
       shift: {
         en: '#',
         ru: '№',
-      }
+      },
     },
     {
       keyCode: 'Digit4',
@@ -53,7 +53,7 @@ const keysData = [
       shift: {
         en: '$',
         ru: ';',
-      }
+      },
     },
     {
       keyCode: 'Digit5',
@@ -64,7 +64,7 @@ const keysData = [
       shift: {
         en: '%',
         ru: '%',
-      }
+      },
     },
     {
       keyCode: 'Digit6',
@@ -75,7 +75,7 @@ const keysData = [
       shift: {
         en: '^',
         ru: ':',
-      }
+      },
     },
     {
       keyCode: 'Digit7',
@@ -86,7 +86,7 @@ const keysData = [
       shift: {
         en: '&',
         ru: '?',
-      }
+      },
     },
     {
       keyCode: 'Digit8',
@@ -97,7 +97,7 @@ const keysData = [
       shift: {
         en: '*',
         ru: '*',
-      }
+      },
     },
     {
       keyCode: 'Digit9',
@@ -108,7 +108,7 @@ const keysData = [
       shift: {
         en: '(',
         ru: '(',
-      }
+      },
     },
     {
       keyCode: 'Digit0',
@@ -119,7 +119,7 @@ const keysData = [
       shift: {
         en: ')',
         ru: ')',
-      }
+      },
     },
     {
       keyCode: 'Minus',
@@ -130,7 +130,7 @@ const keysData = [
       shift: {
         en: '_',
         ru: '_',
-      }
+      },
     },
     {
       keyCode: 'Equal',
@@ -141,17 +141,17 @@ const keysData = [
       shift: {
         en: '+',
         ru: '+',
-      }
+      },
     },
     {
       keyCode: 'Backspace',
-      general: '⌫'
+      general: '⌫',
     },
   ],
   [
     {
       keyCode: 'Tab',
-      general: '↹'
+      general: '↹',
     },
     {
       keyCode: 'KeyQ',
@@ -162,7 +162,7 @@ const keysData = [
       shift: {
         en: 'Q',
         ru: 'Й',
-      }
+      },
     },
     {
       keyCode: 'KeyW',
@@ -173,7 +173,7 @@ const keysData = [
       shift: {
         en: 'W',
         ru: 'Ц',
-      }
+      },
     },
     {
       keyCode: 'KeyE',
@@ -184,7 +184,7 @@ const keysData = [
       shift: {
         en: 'E',
         ru: 'У',
-      }
+      },
     },
     {
       keyCode: 'KeyR',
@@ -195,7 +195,7 @@ const keysData = [
       shift: {
         en: 'R',
         ru: 'К',
-      }
+      },
     },
     {
       keyCode: 'KeyT',
@@ -206,7 +206,7 @@ const keysData = [
       shift: {
         en: 'T',
         ru: 'Е',
-      }
+      },
     },
     {
       keyCode: 'KeyY',
@@ -217,7 +217,7 @@ const keysData = [
       shift: {
         en: 'Y',
         ru: 'Н',
-      }
+      },
     },
     {
       keyCode: 'KeyU',
@@ -228,7 +228,7 @@ const keysData = [
       shift: {
         en: 'U',
         ru: 'Г',
-      }
+      },
     },
     {
       keyCode: 'KeyI',
@@ -239,7 +239,7 @@ const keysData = [
       shift: {
         en: 'I',
         ru: 'Ш',
-      }
+      },
     },
     {
       keyCode: 'KeyO',
@@ -250,7 +250,7 @@ const keysData = [
       shift: {
         en: 'O',
         ru: 'Щ',
-      }
+      },
     },
     {
       keyCode: 'KeyP',
@@ -261,7 +261,7 @@ const keysData = [
       shift: {
         en: 'P',
         ru: 'З',
-      }
+      },
     },
     {
       keyCode: 'BracketLeft',
@@ -272,7 +272,7 @@ const keysData = [
       shift: {
         en: '{',
         ru: 'Х',
-      }
+      },
     },
     {
       keyCode: 'BracketRight',
@@ -283,17 +283,17 @@ const keysData = [
       shift: {
         en: '}',
         ru: 'Ъ',
-      }
+      },
     },
     {
       keyCode: 'Delete',
-      general: 'Del'
+      general: 'Del',
     },
   ],
   [
     {
       keyCode: 'CapsLock',
-      general: '⇪'
+      general: '⇪',
     },
     {
       keyCode: 'KeyA',
@@ -304,7 +304,7 @@ const keysData = [
       shift: {
         en: 'A',
         ru: 'Ф',
-      }
+      },
     },
     {
       keyCode: 'KeyS',
@@ -315,7 +315,7 @@ const keysData = [
       shift: {
         en: 'S',
         ru: 'Ы',
-      }
+      },
     },
     {
       keyCode: 'KeyD',
@@ -326,7 +326,7 @@ const keysData = [
       shift: {
         en: 'D',
         ru: 'В',
-      }
+      },
     },
     {
       keyCode: 'KeyF',
@@ -337,7 +337,7 @@ const keysData = [
       shift: {
         en: 'F',
         ru: 'А',
-      }
+      },
     },
     {
       keyCode: 'KeyG',
@@ -348,7 +348,7 @@ const keysData = [
       shift: {
         en: 'G',
         ru: 'П',
-      }
+      },
     },
     {
       keyCode: 'KeyH',
@@ -359,7 +359,7 @@ const keysData = [
       shift: {
         en: 'H',
         ru: 'Р',
-      }
+      },
     },
     {
       keyCode: 'KeyJ',
@@ -370,7 +370,7 @@ const keysData = [
       shift: {
         en: 'J',
         ru: 'О',
-      }
+      },
     },
     {
       keyCode: 'KeyK',
@@ -381,7 +381,7 @@ const keysData = [
       shift: {
         en: 'K',
         ru: 'Л',
-      }
+      },
     },
     {
       keyCode: 'KeyL',
@@ -392,7 +392,7 @@ const keysData = [
       shift: {
         en: 'L',
         ru: 'Д',
-      }
+      },
     },
     {
       keyCode: 'Semicolon',
@@ -403,7 +403,7 @@ const keysData = [
       shift: {
         en: ':',
         ru: 'Ж',
-      }
+      },
     },
     {
       keyCode: 'Quote',
@@ -414,17 +414,17 @@ const keysData = [
       shift: {
         en: '"',
         ru: 'Э',
-      }
+      },
     },
     {
       keyCode: 'Enter',
-      general: 'Enter'
+      general: 'Enter',
     },
   ],
   [
     {
       keyCode: 'ShiftLeft',
-      general: '⇧'
+      general: '⇧',
     },
     {
       keyCode: 'KeyZ',
@@ -435,7 +435,7 @@ const keysData = [
       shift: {
         en: 'Z',
         ru: 'Я',
-      }
+      },
     },
     {
       keyCode: 'KeyX',
@@ -446,7 +446,7 @@ const keysData = [
       shift: {
         en: 'X',
         ru: 'Ч',
-      }
+      },
     },
     {
       keyCode: 'KeyC',
@@ -457,7 +457,7 @@ const keysData = [
       shift: {
         en: 'C',
         ru: 'С',
-      }
+      },
     },
     {
       keyCode: 'KeyV',
@@ -468,7 +468,7 @@ const keysData = [
       shift: {
         en: 'V',
         ru: 'М',
-      }
+      },
     },
     {
       keyCode: 'KeyB',
@@ -479,7 +479,7 @@ const keysData = [
       shift: {
         en: 'B',
         ru: 'И',
-      }
+      },
     },
     {
       keyCode: 'KeyN',
@@ -490,7 +490,7 @@ const keysData = [
       shift: {
         en: 'N',
         ru: 'Т',
-      }
+      },
     },
     {
       keyCode: 'KeyM',
@@ -501,7 +501,7 @@ const keysData = [
       shift: {
         en: 'M',
         ru: 'Ь',
-      }
+      },
     },
     {
       keyCode: 'Comma',
@@ -512,7 +512,7 @@ const keysData = [
       shift: {
         en: '<',
         ru: 'Б',
-      }
+      },
     },
     {
       keyCode: 'Period',
@@ -523,7 +523,7 @@ const keysData = [
       shift: {
         en: '>',
         ru: 'Ю',
-      }
+      },
     },
     {
       keyCode: 'Slash',
@@ -534,7 +534,7 @@ const keysData = [
       shift: {
         en: '?',
         ru: ',',
-      }
+      },
     },
     {
       keyCode: 'Backslash',
@@ -545,25 +545,25 @@ const keysData = [
       shift: {
         en: '|',
         ru: '/',
-      }
+      },
     },
     {
       keyCode: 'ArrowUp',
-      general: '↑'
+      general: '↑',
     },
     {
       keyCode: 'ShiftRight',
-      general: '⇧'
+      general: '⇧',
     },
   ],
   [
     {
       keyCode: 'ControlLeft',
-      general: 'CtrlL'
+      general: 'CtrlL',
     },
     {
       keyCode: 'AltLeft',
-      general: 'AltL'
+      general: 'AltL',
     },
     {
       keyCode: 'switchLang',
@@ -574,7 +574,7 @@ const keysData = [
       shift: {
         en: 'en',
         ru: 'ru',
-      }
+      },
     },
     {
       keyCode: 'Space',
@@ -585,29 +585,29 @@ const keysData = [
       shift: {
         en: ' ',
         ru: ' ',
-      }
+      },
     },
     {
       keyCode: 'AltRight',
-      general: 'AltR'
+      general: 'AltR',
     },
     {
       keyCode: 'ControlRight',
-      general: 'CtrlR'
+      general: 'CtrlR',
     },
     {
       keyCode: 'ArrowLeft',
-      general: '←'
+      general: '←',
     },
     {
       keyCode: 'ArrowDown',
-      general: '↓'
+      general: '↓',
     },
     {
       keyCode: 'ArrowRight',
-      general: '→'
+      general: '→',
     },
-  ]
-]
+  ],
+];
 
 export default keysData;

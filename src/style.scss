@@ -1,37 +1,79 @@
-@import url(./normalize.css);
+@import './normalize.scss';
 
-$keyboard-width: 900px;
+$keyboard-width: 940px;
 $keyboard-heigth: 300px;
 
-$textarea-width: 940px;
-$textarea-heigth: 300px;
+$textareaWraper-width: 1000px;
+$textareaWraper-height: 100%;
 
 body {
     background-color: rgb(216, 147, 20);
+    overflow: hidden;
+}
+
+.textarea_wraper {
+    position: absolute;
+    top: 20px;
+    left: calc(50% - $textareaWraper-width / 2);
+
+    width: $textareaWraper-width;
+    height: $textareaWraper-height;
 }
 
 .textarea {
-    // box-sizing: border-box;
+    box-sizing: border-box;
     
-    position: fixed;
-    top: 20px;
-    left: calc(50% - $textarea-width / 2);
+    width: 100%;
+    min-height: 100px;
+    height: 350px;
+    max-height: 50%;
 
     font-size: 40px;
     letter-spacing: 0.09rem;
+    color: black;
 
     padding: 10px;
-    border: 5px solid rgb(71, 70, 70);
+    border: 5px solid gray;
     border-radius: 5px;
-    width: $textarea-width;
-    height: $textarea-heigth;
 
+    background-color: white;
+    box-shadow: 0px 0px 30px black;
     outline: 10px solid black;
+    resize: vertical;
+}
+
+.button_clear {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 2px solid black;
+
+    transition: 300ms;
+
+    background-color: rgb(177, 32, 32);
+    &:hover {
+        background-color: rgb(146, 20, 20);
+        cursor: pointer;
+    }
+    &:active {
+        background-color: rgb(105, 12, 12);
+    }
+}
+
+.keyboard_description {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 15px;
+    font-size: 30px;
 }
 
 .keyboard {
+    box-sizing: border-box;
     position: fixed;
-    // top: calc(50% - $keyboard-heigth / 2);
     bottom: 20px;
     left: calc(50% - $keyboard-width / 2);
 
@@ -44,7 +86,6 @@ body {
     padding: 10px;
     border-radius: 5px;
     width: $keyboard-width;
-    height: $keyboard-heigth;
 
     background-color: white;
     box-shadow: 0px 0px 20px black;
@@ -72,6 +113,8 @@ body {
     height: 50px;
 
     background-color: rgba(0, 0, 0, 0.788);
+
+    transition: 300ms;
 
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none;   /* Chrome/Safari/Opera */

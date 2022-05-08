@@ -17,6 +17,7 @@ const config = {
     devtool: 'source-map',
     output: {
         path: path.resolve(__dirname, 'dist'),
+        filename: 'script.js',
     },
     devServer: {
         open: true,
@@ -24,8 +25,8 @@ const config = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
-            // minify: false
+            title: 'Virtual keyboard',
+            favicon: './favicon.ico'
         }),
         new CleanWebpackPlugin(),
 
@@ -61,7 +62,9 @@ module.exports = () => {
     if (isProduction) {
         config.mode = 'production';
         
-        config.plugins.push(new MiniCssExtractPlugin());
+        config.plugins.push(new MiniCssExtractPlugin({
+            filename: 'css/style.css'
+        }));
         
         
     } else {
